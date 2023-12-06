@@ -1,12 +1,13 @@
 import { Button, Input, Textarea } from "@nextui-org/react";
-import { MouseEventHandler, useState } from "react";
+import { useState } from "react";
 
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
     console.log(`Submitting ${name} ${email} ${message}`);
   };
 
@@ -18,7 +19,7 @@ export default function Contact() {
       <form
         className="flex flex-col items-center justify-evenly lg:w-[50vw] lg:h-[60vh] mobile:w-[90%] mt-8 bg-white h-[400px] rounded-xl mb-10 "
         id="contactcontainer"
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <Input
           type="text"
@@ -56,6 +57,7 @@ export default function Contact() {
             base: "w-2/3",
             input: "resize-y min-h-[40px]",
           }}
+          onChange={(e) => setMessage(e.target.value)}
         />
 
         <Button
