@@ -42,7 +42,7 @@ function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <>
+    <div className="w-full bg-white">
       <Wave
         mask="url(#mask)"
         fill="#00008b"
@@ -89,7 +89,10 @@ function Navigation() {
         </defs>
       </Wave>
 
-      <Navbar onMenuOpenChange={(open) => setIsMenuOpen(open)}>
+      <Navbar
+        onMenuOpenChange={(open) => setIsMenuOpen(open)}
+        className="fixed"
+      >
         <NavbarBrand aria-label={isMenuOpen ? "Close menu" : "Open menu"}>
           <img
             src={CircleLogo}
@@ -107,7 +110,8 @@ function Navigation() {
         </NavbarBrand>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="lg:hidden"
+          className="lg:hidden mobile:absolute mobile:right-0 mobile:mr-4 mobile:mt-2"
+          title={isMenuOpen ? "Close menu" : "Open menu"}
         />
         <NavbarContent
           className="hidden sm:flex gap-14
@@ -154,7 +158,7 @@ function Navigation() {
         {/* <div className="-z-10 absolute left-1/2"> */}
         {/* </div> */}
       </Navbar>
-    </>
+    </div>
   );
 }
 

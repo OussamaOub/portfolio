@@ -50,7 +50,7 @@ import "./Home.css";
 function Home() {
   return (
     <div
-      className="w-full h-screen flex flex-col items-center top-0 left-0 overflow-y-auto scroll-snap-align-start scroll-margin-top-10"
+      className="w-full h-screen bg-white flex flex-col items-center top-0 left-0 overflow-y-auto "
       id="Main"
     >
       {/* <img
@@ -58,7 +58,7 @@ function Home() {
         alt="homebg"
         className="absolute object-cover w-full h-full"
       /> */}
-      <div className="h-[calc(100vh-200px)] mobile:h-[calc(100vh-350px)] w-full flex flex-row items-center justify-evenly transition-all duration-250 mobile:mt-[100px] mobile:flex-col mobile:gap-8 ">
+      <div className="h-[calc(100vh-100px)] mobile:h-[calc(100vh-250px)] w-full flex flex-row items-center justify-evenly transition-all duration-250 mobile:mt-[100px] mobile:flex-col mobile:gap-8 ">
         <div
           className="flex flex-row justify-around flex-nowrap 
               md:flex-col md:justify-center md:items-center md:space-y-4 mobile:flex-col 
