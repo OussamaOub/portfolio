@@ -1,49 +1,5 @@
-// // import React from 'react'
 import pic from "../assets/pic.jpg";
-// import Typewriter from "typewriter-effect";
-// const strings = ["Oussama.", "Oubahim."];
-// function Home() {
-//   return (
-//     <div>
-//       <img
-//         src={homebg}
-//         alt="homebg"
-//         className="absolute object-cover w-full h-full"
-//       />
-//       <div
-//         className="relative flex justify-center pt-12 lg:pt-64 px-8
-//         mobile:px-0  mobile:pb-20 items-center flex-col
-//       "
-//       >
-//         {/* <h1
-//           className="text-4xl text-blue-500 font-bold cursive leading-none lg:leading-snug
-//           bg-white bg-opacity-75 rounded-xl px-4 py-2 w-fit
-//           "
-//         >
-//           Typewriter Component.
-//         </h1> */}
-//         <Typewriter
-//           options={{
-//             strings: strings,
-//             autoStart: true,
-//             loop: true,
-//             delay: 100,
-
-//             wrapperClassName:
-//               "text-4xl text-black font-bold cursive leading-none lg:leading-snug bg-white bg-opacity-75 rounded-xl px-4 py-2 w-fit",
-//           }}
-//         />
-//         <div className="text-black mt-10">
-//           <h1>Picture</h1>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Home;
-
-// import pic from "../assets/pic.jpg";
+import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import "./Home.css";
 
@@ -53,12 +9,13 @@ function Home() {
       className="w-full h-screen bg-white flex flex-col items-center top-0 left-0 overflow-y-auto "
       id="Main"
     >
-      {/* <img
-        src={homebg}
-        alt="homebg"
-        className="absolute object-cover w-full h-full"
-      /> */}
-      <div className="h-[calc(100vh-100px)] mobile:h-[calc(100vh-250px)] w-full flex flex-row items-center justify-evenly transition-all duration-250 mobile:mt-[100px] mobile:flex-col mobile:gap-8 ">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        exit={{ opacity: 0 }}
+        className="h-[calc(100vh-100px)] mobile:h-[calc(100vh-250px)] w-full flex flex-row items-center justify-evenly transition-all duration-250 mobile:mt-[100px] mobile:flex-col mobile:gap-8 "
+      >
         <div
           className="flex flex-row justify-around flex-nowrap 
               md:flex-col md:justify-center md:items-center md:space-y-4 mobile:flex-col 
@@ -115,15 +72,10 @@ function Home() {
         </div>
 
         <div
-          className="PhotoContainer w-[350px] h-[350px] mobile:w-[200px] mobile:h-[200px] mobile:overflow-hidden
-            "
+          className="PhotoContainer w-[350px] h-[350px] mobile:w-[200px] mobile:h-[200px] mobile:overflow-hidden"
           id="photo"
-          // onMouseOver={() => {
-          //   props.handleHoverOverPhoto();
-          // }}
         >
           <img
-            // src="https://avatars.githubusercontent.com/u/55942632?v=4"
             src={pic}
             alt="Oussama"
             className="
@@ -141,7 +93,7 @@ function Home() {
             draggable="false"
           />
         </div>
-      </div>
+      </motion.div>
       <div
         className="mobile:w-full mobile:relative mobile:h-full
         mobile:flex flex-col justify-center items-center
@@ -154,9 +106,9 @@ function Home() {
             cursor: "pointer",
           }}
           onClick={() => {
-            // document
-            //   .getElementById("AboutMe")
-            //   .scrollIntoView({ behavior: "smooth" });
+            document.getElementById("AboutMe")?.scrollIntoView({
+              behavior: "smooth",
+            });
           }}
         >
           <path className="a1" d="M0 0 L30 32 L60 0"></path>

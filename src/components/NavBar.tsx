@@ -14,32 +14,40 @@ import CircleLogo from "../assets/circle.svg";
 
 type NavItemProp = {
   name: string;
-  link: string;
-  active?: boolean;
+  id: string;
+  // active?: boolean;
 };
 
 const navItems: NavItemProp[] = [
   {
     name: "Home",
-    link: "#",
+    id: "Home",
   },
   {
     name: "About",
-    link: "#",
+    id: "AboutMe",
   },
   {
     name: "Projects",
-    link: "#",
+    id: "Projects",
   },
   {
     name: "Contact",
-    link: "#",
+    id: "Contact",
   },
 ];
 
 function Navigation() {
   const [active, setActive] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleScrollToElement = (navItem: any) => {
+    navItem.preventDefault();
+    setActive(navItems.findIndex((item) => item.name === navItem.name));
+    document.getElementById(navItem.id)?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="w-full bg-white">
@@ -124,12 +132,12 @@ function Navigation() {
               <NavbarItem
                 key={index}
                 isActive={active === index}
-                onClick={() => setActive(index)}
-                // aria-hidden="false"
+                onClick={() => handleScrollToElement(item)}
+                className="cursor-pointer"
               >
-                <Link color="foreground" href={item.link}>
-                  {item.name}
-                </Link>
+                {/* <Link color="foreground" href={item.id}> */}
+                {item.name}
+                {/* </Link> */}
               </NavbarItem>
             );
           })}
@@ -155,8 +163,6 @@ function Navigation() {
           </NavbarMenu>
         </NavbarContent>
         <NavbarContent justify="end"></NavbarContent>
-        {/* <div className="-z-10 absolute left-1/2"> */}
-        {/* </div> */}
       </Navbar>
     </div>
   );

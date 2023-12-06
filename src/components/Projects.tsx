@@ -1,11 +1,14 @@
 import { Button, Card, CardFooter, CardHeader, Image } from "@nextui-org/react";
+import joyride from "../assets/projects/joyRide.png";
+import carebooker from "../assets/projects/CareBooker.png";
+import jobboard from "../assets/projects/job-board.png";
 
 function Projects() {
   type ProjectProp = {
     name: string;
     description: string;
     link: string | null;
-    pic?: string;
+    pic: string;
   };
 
   const projects: ProjectProp[] = [
@@ -13,19 +16,19 @@ function Projects() {
       name: "JoyRide",
       description: "A carpooling app for AUI students",
       link: null,
-      pic: "",
+      pic: joyride,
     },
     {
       name: "CareBooker",
       description: "A doctor booking mobile application",
       link: "https://github.com/OussamaOub/CareBooker",
-      pic: "https://github.com/OussamaOub/CareBooker/raw/main/assets/screenshots/PatientMain.png?raw=true",
+      pic: carebooker,
     },
     {
       name: "Job-Board",
       description: "A online job board application",
       link: "https://github.com/OussamaOub/Job-Board",
-      pic: "",
+      pic: jobboard,
     },
   ];
 
@@ -45,7 +48,7 @@ function Projects() {
               radius="lg"
               key={index}
             >
-              <CardHeader className="absolute z-10 top-1 flex-col items-start">
+              <CardHeader className="absolute z-10 top-0 flex-col items-start backdrop-blur-[4px]">
                 <h4 className="text-black font-medium text-2xl">
                   {project.name}
                 </h4>

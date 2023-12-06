@@ -39,14 +39,6 @@ export default function Contact() {
           className="w-2/3"
           value={email}
         />
-        {/* <textarea
-          placeholder="Message"
-          onChange={(e) => {
-            setMessage(e.target.value);
-          }}
-          className="contactmessage"
-          value={message}
-        /> */}
         <Textarea
           label="Message"
           required
@@ -65,19 +57,6 @@ export default function Contact() {
           color="success"
           variant="shadow"
           onClick={handleSubmit}
-          // onClick={async () => {
-          //   if (name === "" || email === "" || message === "") {
-          //     alert("Please fill all the fields");
-          //     return;
-          //   }
-          //   const res = await sendComment(name, email, message);
-          //   if (res === true) {
-          //     alert("Message sent successfully");
-          //     setName("");
-          //     setEmail("");
-          //     setMessage("");
-          //   }
-          // }}
         >
           Send
         </Button>

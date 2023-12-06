@@ -19,6 +19,7 @@ import node from "../assets/node.svg";
 import express from "../assets/express.svg";
 import prisma from "../assets/prisma.svg";
 import VisibilitySensor from "react-visibility-sensor";
+import { motion } from "framer-motion";
 
 type StatsProps = {
   name: string;
@@ -160,7 +161,11 @@ const stats: StatsProps[] = [
 
 function About() {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      exit={{ opacity: 0 }}
       className="w-full h-full
     custombg flex flex-col
       "
@@ -217,7 +222,7 @@ function About() {
           </span>
         </main>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
