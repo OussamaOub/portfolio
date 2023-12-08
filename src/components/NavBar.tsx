@@ -68,7 +68,6 @@ function Navigation() {
       behavior: "smooth",
     });
 
-    // Close the navbar after scrolling ends
     const scrollTimeout = setTimeout(() => {
       setIsMenuOpen(false);
     }, 500);

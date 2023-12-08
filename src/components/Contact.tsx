@@ -19,7 +19,10 @@ export default function Contact() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center" id="Contact">
+    <div
+      className="flex flex-col items-center justify-center w-full h-screen"
+      id="Contact"
+    >
       <h1 className="text-4xl font-bold text-center text-white pt-20">
         Get in Touch
       </h1>
