@@ -33,7 +33,7 @@ function Projects() {
   ];
 
   return (
-    <div className=" w-full h-fit">
+    <div className=" w-full h-fit" id="Projects">
       <h1 className="text-3xl font-bold text-center text-white pt-20">
         Some of my recent projects:
       </h1>

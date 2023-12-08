@@ -7,7 +7,7 @@ function Home() {
   return (
     <div
       className="w-full h-screen bg-white flex flex-col items-center top-0 left-0 overflow-y-auto "
-      id="Main"
+      id="Home"
     >
       <motion.div
         initial={{ opacity: 0 }}

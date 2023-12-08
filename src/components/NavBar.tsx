@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
@@ -15,7 +14,6 @@ import CircleLogo from "../assets/circle.svg";
 type NavItemProp = {
   name: string;
   id: string;
-  // active?: boolean;
 };
 
 const navItems: NavItemProp[] = [
@@ -41,12 +39,46 @@ function Navigation() {
   const [active, setActive] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const aboutMe = document.getElementById("AboutMe")?.offsetTop;
+      const projects = document.getElementById("Projects")?.offsetTop;
+      const contact = document.getElementById("Contact")?.offsetTop;
+
+      if (scrollPosition < aboutMe!) {
+        setActive(0);
+      } else if (scrollPosition < projects!) {
+        setActive(1);
+      } else if (scrollPosition < contact!) {
+        setActive(2);
+      } else {
+        setActive(3);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const handleScrollToElement = (navItem: any) => {
-    navItem.preventDefault();
     setActive(navItems.findIndex((item) => item.name === navItem.name));
     document.getElementById(navItem.id)?.scrollIntoView({
       behavior: "smooth",
     });
+
+    // Close the navbar after scrolling ends
+    const scrollTimeout = setTimeout(() => {
+      setIsMenuOpen(false);
+    }, 500);
+
+    const handleScrollEnd = () => {
+      clearTimeout(scrollTimeout);
+      window.removeEventListener("scroll", handleScrollEnd);
+    };
+
+    window.addEventListener("scroll", handleScrollEnd);
   };
 
   return (
@@ -100,6 +132,7 @@ function Navigation() {
       <Navbar
         onMenuOpenChange={(open) => setIsMenuOpen(open)}
         className="fixed"
+        isMenuOpen={isMenuOpen}
       >
         <NavbarBrand aria-label={isMenuOpen ? "Close menu" : "Open menu"}>
           <img
@@ -133,31 +166,21 @@ function Navigation() {
                 key={index}
                 isActive={active === index}
                 onClick={() => handleScrollToElement(item)}
-                className="cursor-pointer"
+                className="cursor-pointer transition"
               >
-                {/* <Link color="foreground" href={item.id}> */}
                 {item.name}
-                {/* </Link> */}
               </NavbarItem>
             );
           })}
-          <NavbarMenu>
+          <NavbarMenu aria-disabled={!isMenuOpen}>
             {navItems.map((item, index) => (
-              <NavbarMenuItem key={`${item}-${index}`}>
-                <Link
-                  color={
-                    index === 2
-                      ? "primary"
-                      : index === navItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                  }
-                  className="w-full"
-                  href="#"
-                  size="lg"
-                >
-                  {item.name}
-                </Link>
+              <NavbarMenuItem
+                key={index}
+                isActive={active === index}
+                onClick={() => handleScrollToElement(item)}
+                className="cursor-pointer transition"
+              >
+                {item.name}
               </NavbarMenuItem>
             ))}
           </NavbarMenu>
